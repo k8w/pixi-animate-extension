@@ -6,8 +6,8 @@ module.exports = function(gulp, options, plugins) {
         '"' + options.bundleId + '" ' +
         '"' + output + '" ' +
         '"' + options.packagerCert + '" ' +
-        '"' + options.packagerPass + '" ' +
-        '-tsa \"https://timestamp.geotrust.com/tsa\"';
+        '"' + options.packagerPass + '" '
+        // '-tsa \"https://timestamp.geotrust.com/tsa\"';
     gulp.task('package', plugins.shell.task([cmd], {
         quiet: false
     }));
