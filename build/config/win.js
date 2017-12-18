@@ -7,10 +7,10 @@ module.exports = {
     // ZXP plugin packaging options
     packager: '.\\build\\bin\\ZXPSignCmd.exe',
 
-    // VS2015 Solution file for building the win32 plugin
+    // VS2017 Solution file for building the win32 plugin
     projectFile: '.\\project\\win\\pixi-animate-vs2017\\pixi-animate-vs2017.sln',
     
-    // This path only works for Visual Studio 2015 (VS14), 
+    // This path only works for Visual Studio 2017 (VS14), 
     // so this must be updated accordingly with VS studio switch
     VCTargetsPath: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\Common7\\IDE\\VC\\VCTargets",
 

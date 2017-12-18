@@ -26,6 +26,7 @@
 #define PUBLISHER_H_
 
 #include <vector>
+#include <memory>
 
 #include "Version.h"
 #include "FCMTypes.h"

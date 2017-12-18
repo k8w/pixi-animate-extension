@@ -27,6 +27,7 @@
 #define DOC_TYPE_H_
 
 #include <map>
+#include <memory>
 
 #include "Version.h"
 #include "FCMTypes.h"
