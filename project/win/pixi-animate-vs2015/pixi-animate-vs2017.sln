@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixi-animate-vs2015", "pixi-animate-vs2015\pixi-animate-vs2015.vcxproj", "{FC335319-C157-4369-8E78-4AE46720E535}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixi-animate-vs2017", "pixi-animate-vs2017\pixi-animate-vs2017.vcxproj", "{FC335319-C157-4369-8E78-4AE46720E535}"
 	ProjectSection(ProjectDependencies) = postProject
 		{152CE948-F659-4206-A50A-1D2B9658EF96} = {152CE948-F659-4206-A50A-1D2B9658EF96}
 	EndProjectSection

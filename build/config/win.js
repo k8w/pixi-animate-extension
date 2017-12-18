@@ -1,6 +1,6 @@
 module.exports = {
-    pluginTempDebug: 'project/win/pixi-animate-vs2015/x64/Debug/pixi-animate-vs2015.dll',
-    pluginTempRelease: 'project/win/pixi-animate-vs2015/x64/Release/pixi-animate-vs2015.dll',
+    pluginTempDebug: 'project/win/pixi-animate-vs2017/x64/Debug/pixi-animate-vs2017.dll',
+    pluginTempRelease: 'project/win/pixi-animate-vs2017/x64/Release/pixi-animate-vs2017.dll',
     pluginFile: 'com.jibo.PixiAnimate/plugin/lib/win/PixiAnimate.fcm',
     installFolder: 'C:\\Program Files (x86)\\Common Files\\Adobe\\CEP\\extensions\\com.jibo.PixiAnimate',
     
@@ -8,11 +8,11 @@ module.exports = {
     packager: '.\\build\\bin\\ZXPSignCmd.exe',
 
     // VS2015 Solution file for building the win32 plugin
-    projectFile: '.\\project\\win\\pixi-animate-vs2015\\pixi-animate-vs2015.sln',
+    projectFile: '.\\project\\win\\pixi-animate-vs2017\\pixi-animate-vs2017.sln',
     
     // This path only works for Visual Studio 2015 (VS14), 
     // so this must be updated accordingly with VS studio switch
-    VCTargetsPath: "C:\\Program Files (x86)\\MSBuild\\Microsoft.Cpp\\v4.0\\V140",
+    VCTargetsPath: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\Common7\\IDE\\VC\\VCTargets",
 
     // Command to uncompress to local install folder
     installCmd: '.\\build\\bin\\7za.exe x -y -bb0 -o"${installFolder}" "${output}"',
