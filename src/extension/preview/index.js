@@ -55,7 +55,8 @@ app.on('ready', function() {
             src: argv.src,
             height: argv.height,
             width: argv.width,
-            background: argv.background
+            background: argv.background,
+            devTools: argv.devTools
         };
     });
 
@@ -101,11 +102,6 @@ app.on('ready', function() {
 
         // Clear any local history
         mainWindow.webContents.clearHistory();
-
-        // k8w: 暂时隐藏直接打开控制台
-        // if (argv.devTools) {
-        //     mainWindow.webContents.toggleDevTools();
-        // }
 
         // Load the preview window
         mainWindow.loadURL('file://' + __dirname + '/preview.html'); 
