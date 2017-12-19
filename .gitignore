@@ -1,7 +1,6 @@
 *.DS_Store
 *~
 .idea/
-*.zxp
 temp/
 project/mac/lib/release/PixiAnimate.fcm.plugin.dSYM
 project/mac/PixiAnimate.mp.xcodeproj/xcuserdata/
