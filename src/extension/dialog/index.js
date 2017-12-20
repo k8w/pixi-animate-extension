@@ -136,8 +136,8 @@
             // String options
             $htmlPath.value = data[SETTINGS + "HTMLPath"];
             $libsPath.value = data[SETTINGS + "LibsPath"];
-            $imagesPath.value = data[SETTINGS + "ImagesPath"];
-            $soundsPath.value = data[SETTINGS + "SoundsPath"];
+            $imagesPath.value = data[SETTINGS + "ImagesPath"] || '';
+            $soundsPath.value = data[SETTINGS + "SoundsPath"] || '';
             $namespace.value = data[SETTINGS + "Namespace"];
             $outputFile.value = data[SETTINGS + "OutputFile"];
             $stageName.value = data[SETTINGS + "StageName"];

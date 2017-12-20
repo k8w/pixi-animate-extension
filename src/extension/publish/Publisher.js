@@ -89,7 +89,7 @@ p.exportAssets = function(done)
     const meta = this._data._meta;
 
     // No shapes, nothing to do here
-    if (!meta.imagesPath) {
+    if (meta.imagesPath == null) {
         return done();
     }
 
