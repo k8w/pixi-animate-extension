@@ -13,6 +13,7 @@
             "args": [
                 "src/extension/publish/index.js",
                 "--src=E:\\tam_fla\\test.json",
+                "--assets=E:\\Codes\\pixi-animate-extension\\extension\\publish",
                 "--debug",
                 "--compress=false"
             ]

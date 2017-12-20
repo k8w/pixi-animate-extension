@@ -795,17 +795,15 @@ namespace PixiJS
 			pCalloc->Free(outputString);
 		}
 	}
-
+	
 	void Utils::Log(const char* fmt, ...)
-	{
+	{		
+		FILE* pLogFile = fopen("pixi-animate-extension.log", "a");
 		va_list args;
-		char buffer[1024];
-
 		va_start(args, fmt);
-		vsnprintf(buffer, 1024, fmt, args);
+		fprintf(pLogFile, fmt, args);
 		va_end(args);
-
-		//printf(buffer);
+		fclose(pLogFile);
 	}
 
 	bool Utils::Exists(const std::string& fileName)

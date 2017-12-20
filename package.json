@@ -11,7 +11,7 @@
     "atlaspack": "^1.0.0",
     "electron-json-storage": "^2.0.0",
     "js-beautify": "^1.6.2",
-    "k8w-pixi-animate": "*",
+    "k8w-pixi-animate": "^1.4.3",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "pixi.js": "*",
