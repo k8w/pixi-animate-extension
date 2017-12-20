@@ -673,7 +673,7 @@ namespace PixiJS
 		pFullPath = Utils::ToString16(FixSlashes(path), pCallback);
 		ASSERT(pFullPath);
 
-		ret = ::CreateDirectory((LPCWSTR)pFullPath, NULL);
+		ret = SHCreateDirectoryEx(NULL, (LPCWSTR)pFullPath, NULL);
 		if (ret == FALSE)
 		{
 			DWORD err = GetLastError();
