@@ -801,7 +801,7 @@ namespace PixiJS
 		FILE* pLogFile = fopen("pixi-animate-extension.log", "a");
 		va_list args;
 		va_start(args, fmt);
-		fprintf(pLogFile, fmt, args);
+		vfprintf(pLogFile, fmt, args);
 		va_end(args);
 		fclose(pLogFile);
 	}
