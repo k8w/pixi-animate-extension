@@ -584,6 +584,12 @@ namespace PixiJS
 		fileName = path.substr(index + 1, path.length() - index - 1);
 	}
 
+	std::string Utils::GetFilePath(const std::string pathName)
+	{
+		size_t index = pathName.find_last_of("/\\");
+		return pathName.substr(0, index);
+	}
+
 	void Utils::GetFileNameWithoutExtension(const std::string& path, std::string& fileName)
 	{
 		GetFileName(path, fileName);
@@ -679,7 +685,7 @@ namespace PixiJS
 			DWORD err = GetLastError();
 			if (err != ERROR_ALREADY_EXISTS)
 			{
-				res = FCM_GENERAL_ERROR;
+				res = FCM_SUCCESS;
 			}
 		}
 
@@ -798,12 +804,14 @@ namespace PixiJS
 	
 	void Utils::Log(const char* fmt, ...)
 	{		
+		/*
 		FILE* pLogFile = fopen("pixi-animate-extension.log", "a");
 		va_list args;
 		va_start(args, fmt);
 		vfprintf(pLogFile, fmt, args);
 		va_end(args);
 		fclose(pLogFile);
+		*/
 	}
 
 	bool Utils::Exists(const std::string& fileName)

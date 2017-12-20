@@ -323,13 +323,21 @@ namespace PixiJS
 				}
 				m_imageFolderCreated = true;
 			}
+
+			//k8w: use full libPathName as assetId
 			Utils::GetFileExtension(libPathName, ext);
-			Utils::GetFileNameWithoutExtension(libPathName, name);
+			name = libPathName;
+			//Utils::GetFileNameWithoutExtension(libPathName, name);
 			SetImageExportFileName(libPathName, name);
 
+			//k8w: use full libPathName as assetId
 			if (ext == "")
 			{
-				ext = "png";
+				ext = ".png";
+			}
+			else
+			{
+				ext = "";
 			}
 		}
 
@@ -349,6 +357,8 @@ namespace PixiJS
 #else
 			FCM::StringRep16 pFilePath = Utils::ToString16(bitmapExportPath, m_pCallback);
 #endif
+			//k8w: use full libPathName as assetId
+			Utils::CreateDir(Utils::GetFilePath(bitmapExportPath), m_pCallback);
 			res = bitmapExportService->ExportToFile(pMediaItem, pFilePath, 100);
 			ASSERT(FCM_SUCCESS_CODE(res));
 
@@ -734,18 +744,26 @@ namespace PixiJS
 				}
 				m_imageFolderCreated = true;
 			}
+
+			//k8w: use full libPathName as assetId
+			name = libPathName;
 			Utils::GetFileExtension(libPathName, ext);
-			Utils::GetFileNameWithoutExtension(libPathName, name);
+			// Utils::GetFileNameWithoutExtension(libPathName, name);
 			SetImageExportFileName(libPathName, name);
 
+			//k8w: use full libPathName as assetId
 			if (ext == "")
 			{
-				ext = "png";
+				ext = ".png";
+			}
+			else
+			{
+				ext = "";
 			}
 		}
 
-		std::string bitmapExportPath(m_outputImageFolder + name + "." + ext);
-		std::string bitmapRelPath(m_imagesPath + name + "." + ext);
+		std::string bitmapExportPath(m_outputImageFolder + name + ext);
+		std::string bitmapRelPath(m_imagesPath + name + ext);
 
 		res = m_pCallback->GetService(DOM::FLA_BITMAP_SERVICE, pUnk.m_Ptr);
 		ASSERT(FCM_SUCCESS_CODE(res));
@@ -760,6 +778,8 @@ namespace PixiJS
 #else
 			FCM::StringRep16 pFilePath = Utils::ToString16(bitmapExportPath, m_pCallback);
 #endif
+			//k8w: use full libPathName as assetId
+			Utils::CreateDir(Utils::GetFilePath(bitmapExportPath), m_pCallback);
 			res = bitmapExportService->ExportToFile(pMediaItem, pFilePath, 100);
 			ASSERT(FCM_SUCCESS_CODE(res));
 
@@ -970,11 +990,15 @@ namespace PixiJS
 			m_soundFolderCreated = true;
 		}
 
-		Utils::GetFileExtension(libPathName, ext);
-		Utils::GetJavaScriptName(libPathName, name);
+		//k8w: use full libPathName as assetId
+		//Utils::GetFileExtension(libPathName, ext);
+		//Utils::GetJavaScriptName(libPathName, name);
+		name = libPathName;
+		ext = "";
 
-		std::string soundRelPath = m_soundsPath + name + "." + ext;
-		std::string soundExportPath = m_outputSoundFolder + name + "." + ext;
+		//k8w: use full libPathName as assetId
+		std::string soundRelPath = m_soundsPath + name;
+		std::string soundExportPath = m_outputSoundFolder + name;
 
 		res = m_pCallback->GetService(DOM::FLA_SOUND_SERVICE, pUnk.m_Ptr);
 		ASSERT(FCM_SUCCESS_CODE(res));
@@ -988,6 +1012,8 @@ namespace PixiJS
 #else
 			FCM::StringRep16 pFilePath = Utils::ToString16(soundExportPath, m_pCallback);
 #endif
+			//k8w: use full libPathName as assetId
+			Utils::CreateDir(Utils::GetFilePath(soundExportPath), m_pCallback);
 			res = soundExportService->ExportToFile(pMediaItem, pFilePath);
 			ASSERT(FCM_SUCCESS_CODE(res));
 			pCalloc = Utils::GetCallocService(m_pCallback);
