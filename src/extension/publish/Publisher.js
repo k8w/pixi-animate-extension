@@ -76,13 +76,13 @@ p.exportAssets = function(done)
     // Get the images to export
     this.library.bitmaps.forEach(function(bitmap)
     {
-        assetsToLoad[bitmap.name] = bitmap.src;
+        assetsToLoad[bitmap.src] = bitmap.src;
     });
 
     // Get the sounds to export
     this.library.sounds.forEach(function(sound)
     {
-        assetsToLoad[sound.name] = sound.src;
+        assetsToLoad[sound.src] = sound.src;
     });
 
     const shapes = this.library.shapes;

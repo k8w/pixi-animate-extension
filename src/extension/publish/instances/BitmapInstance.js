@@ -28,7 +28,7 @@ const p = BitmapInstance.prototype;
  */
 p.renderContent = function(renderer)
 {
-    return renderer.template('bitmap-instance', this.libraryItem.name);
+    return renderer.template('bitmap-instance', this.libraryItem.src);
 };
 
 module.exports = BitmapInstance;
