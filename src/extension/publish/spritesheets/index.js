@@ -15,9 +15,9 @@ ipc.on('settings', (ev, data) => {
     const debug = response.debug;
     const scale = response.scale;
 
-    for(let key in assets) {
+    for(let id in assets) {
 
-        let id = src = assets[id];
+        let src = assets[id];
 
         // Ignore non png files
         if (!/\.(png)$/i.test(src)) {
