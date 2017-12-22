@@ -33,3 +33,4 @@ src/ThirdParty/xerces/win/xerces-c-3.1.1/Build/
 tests/
 /package-lock.json
 .vs
+*.zxp
