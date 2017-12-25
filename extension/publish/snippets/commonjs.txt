@@ -1,11 +1,1 @@
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        stage: ${nameSpace}.${stageName},
-        background: ${background},
-        width: ${width},
-        height: ${height},
-        framerate: ${framerate},
-        totalFrames: ${totalFrames},
-        library: ${nameSpace}
-    };
-}
+module.exports = ${nameSpace};
