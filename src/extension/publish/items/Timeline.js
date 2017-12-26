@@ -24,6 +24,13 @@ const Timeline = function(library, data)
      */
     this.postBuffer = '';
 
+    /**
+     * Buffer to end with *CONSTRUCTOR*
+     * @property {String} constructorBuffer
+     * @private
+     */
+    this.constructorBuffer = '';
+
     this._isTimeline = true;
 };
 
@@ -103,7 +110,12 @@ p.getContents = function(renderer)
     {
         this.postBuffer = `this${this.postBuffer};`;
     }
-    return buffer + this.postBuffer;
+
+    if (this.constructorBuffer) {
+        this.constructorBuffer = '\n' + this.constructorBuffer;
+    }
+
+    return buffer + this.postBuffer + this.constructorBuffer;
 };
 
 /**
@@ -256,6 +268,27 @@ p.getFrameScripts = function(renderer)
             for (let j = 0; j < scripts.length; j++)
             {
                 let script = scripts[j].replace(/\\n/g, "\n");
+
+                //k8w: /* CONSTRUCT */
+                if (frame.frame === 0) {
+                    let match = script.match(/\/\* CONSTRUCTOR \*\/[\s\S]+?\/\* END CONSTRUCTOR \*\//g);
+                    if (match) {
+                        match.forEach(v => {
+                            this.constructorBuffer += v + '\n';
+                        })
+                        script = script.replace(/\/\* CONSTRUCTOR \*\/[\s\S]+?\/\* END CONSTRUCTOR \*\//g, '');
+                    }
+                }                
+
+                //k8w: 清除 /* TEST */
+                // if (renderer.compress) {
+                //     script = script.replace(/\/\* TEST \*\/[\s\S]+?\/\* END TEST \*\//g, '').trim();
+                // }
+
+                if (!script) {
+                    continue;
+                }
+
                 this.postBuffer += `.${addAction}(function(){\n${script}}, ${frame.frame})`;
             }
         }

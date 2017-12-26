@@ -15,7 +15,7 @@
                 "--src=E:\\tam_fla\\test.json",
                 "--assets=E:\\Codes\\pixi-animate-extension\\extension\\publish",
                 "--debug",
-                "--compress=false"
+                "--compress=true"
             ]
         }
     ]
