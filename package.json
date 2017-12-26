@@ -17,8 +17,7 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "pixi.js": "*",
-    "semver": "^5.1.0",
-    "uglify-js": "^2.6.1"
+    "semver": "^5.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",

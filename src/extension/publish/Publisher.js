@@ -213,34 +213,10 @@ p.publish = function()
 
     // Get the javascript buffer
     let buffer = this.renderer.render();
-
-    if (meta.compressJS)
-    {
-        // Run through uglify
-        // const UglifyJS = require('uglify-js');
-        // let result = UglifyJS.minify(buffer, {
-        //     fromString: true,
-        //     ecma: 6
-        // });
-        const babel = require('babel-core');
-        let result = babel.transform(buffer, {
-            // minified: true,
-            presets: ['env']
-        })
-        buffer = result.code;
-    }
-    else
-    {
-        // Run through js beautifier
-        const beautify = require('js-beautify').js_beautify;
-        buffer = beautify(buffer, { 
-            indent_size: 4,
-            preserve_newlines: true,
-            space_after_anon_function: true,
-            brace_style: "collapse-preserve-inline",
-            break_chained_methods: true
-        });
-    }
+    buffer = require('babel-core').transform(buffer, {
+        minified: meta.compressJS,
+        presets: ['env']
+    }).code;
 
     // Save the output file
     let outputFile = path.resolve(path.dirname(this._dataFile), meta.outputFile);
