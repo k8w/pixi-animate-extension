@@ -281,9 +281,9 @@ p.getFrameScripts = function(renderer)
                 }                
 
                 //k8w: 清除 /* TEST */
-                // if (renderer.compress) {
-                //     script = script.replace(/\/\* TEST \*\/[\s\S]+?\/\* END TEST \*\//g, '').trim();
-                // }
+                if (renderer.library.meta.cleanTestScripts) {
+                    script = script.replace(/\/\* TEST \*\/[\s\S]+?\/\* END TEST \*\//g, '').trim();
+                }
 
                 if (!script) {
                     continue;

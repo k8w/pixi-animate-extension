@@ -62,7 +62,9 @@ p.render = function(renderer)
         duration: this.totalFrames,
         framerate: this.framerate,
         loop: renderer.loopTimeline,
-        assets: JSON.stringify(this.assets, null, '  '),
+        // assets: JSON.stringify(this.assets, null, '  '),
+        //k8w: 将assets改为数组
+        assets: JSON.stringify(Object.entries(this.assets).map(v => v[1]), null, '  '),
         labels: hasLabels ? ', ' + JSON.stringify(labels) : '',
         contents: this.getContents(renderer)
     });

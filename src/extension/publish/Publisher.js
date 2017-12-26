@@ -16,7 +16,7 @@ const SpritesheetBuilder = require('./SpritesheetBuilder');
 let Publisher = function(dataFile, compress, debug, assetsPath)
 {
     // Change the current directory
-    process.chdir(path.dirname(dataFile));
+    // process.chdir(path.dirname(dataFile));
 
     /**
      * The data file to delete
@@ -123,7 +123,7 @@ p.exportAssets = function(done)
         }
 
         // Create the directory if it doesn't exist
-        const baseUrl = path.resolve(process.cwd(), meta.imagesPath);
+        const baseUrl = path.resolve(path.dirname(this._dataFile), meta.imagesPath);
         mkdirp.sync(baseUrl);
 
         // Save the file data
@@ -217,10 +217,16 @@ p.publish = function()
     if (meta.compressJS)
     {
         // Run through uglify
-        const UglifyJS = require('uglify-js');
-        let result = UglifyJS.minify(buffer, {
-            fromString: true 
-        });
+        // const UglifyJS = require('uglify-js');
+        // let result = UglifyJS.minify(buffer, {
+        //     fromString: true,
+        //     ecma: 6
+        // });
+        const babel = require('babel-core');
+        let result = babel.transform(buffer, {
+            // minified: true,
+            presets: ['env']
+        })
         buffer = result.code;
     }
     else
@@ -237,7 +243,7 @@ p.publish = function()
     }
 
     // Save the output file
-    let outputFile = path.join(process.cwd(), meta.outputFile);
+    let outputFile = path.resolve(path.dirname(this._dataFile), meta.outputFile);
     fs.writeFileSync(outputFile, buffer);
 
     return buffer;

@@ -164,9 +164,9 @@ p.getContents = function(renderer)
         let script = this.frames[0].scripts && this.frames[0].scripts[0];
 
         //k8w: 清除 /* TEST */
-        // if (script && renderer.compress) {
-        //     script = script.replace(/\/\* TEST \*\/[\s\S]+?\/\* END TEST \*\//g, '').trim();
-        // }
+        if (script && renderer.library.meta.cleanTestScripts) {
+            script = script.replace(/\/\* TEST \*\/[\s\S]+?\/\* END TEST \*\//g, '').trim();
+        }
 
         //Container script as constructor
         if (script) {
