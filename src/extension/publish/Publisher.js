@@ -210,12 +210,12 @@ p.run = function(done)
 p.publish = function()
 {
     const meta = this._data._meta;
-
+    const env = require('babel-preset-es2015');
     // Get the javascript buffer
     let buffer = this.renderer.render();
     buffer = require('babel-core').transform(buffer, {
         minified: meta.compressJS,
-        presets: ['env']
+        presets: [env]
     }).code;
 
     // Save the output file

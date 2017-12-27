@@ -10,10 +10,9 @@
   "dependencies": {
     "atlaspack": "^1.0.0",
     "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "electron-json-storage": "^2.0.0",
-    "js-beautify": "^1.6.2",
-    "k8w-pixi-animate": "^1.4.3",
+    "k8w-pixi-animate": "^1.5.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "pixi.js": "*",
@@ -38,7 +37,7 @@
     "gulp-uglify-harmony": "github:jiborobot/gulp-uglify-harmony#master",
     "gulp-util": "^3.0.7",
     "load-gulp-tasks": "^0.1.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^1.1.2"
   }
 }
