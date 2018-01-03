@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Atlas = require('atlaspack').Atlas;
 
-const Spritesheet = function(size, scale, debug) {
+const Spritesheet = function (size, scale, debug, dataFilePath) {
 
     /**
      * Writing images to canvas
@@ -17,6 +17,12 @@ const Spritesheet = function(size, scale, debug) {
      * @property {Boolean} debug
      */
     this.debug = !!debug;
+
+
+    /**
+     * @property {string} dataFilePath
+     */
+    this.dataFilePath = dataFilePath;
 
     /**
      * Scale of the spritesheet
@@ -84,7 +90,7 @@ p.addImages = function(images)
             count++;
             images.splice(i, 1);
             if (!this.debug) {
-                fs.unlinkSync(img.dataset.src);
+                fs.unlinkSync(path.resolve(this.dataFilePath, img.dataset.src));
             }
         }
     }
@@ -129,8 +135,8 @@ p.save = function(output)
     // Write data as string
     const data = JSON.stringify(this.data, null, this.debug ? '  ' : '');
 
-    fs.writeFileSync(output + '.png', image, 'base64');
-    fs.writeFileSync(output + '.json', data, 'utf8');
+    fs.writeFileSync(path.resolve(this.dataFilePath, output + '.png'), image, 'base64');
+    fs.writeFileSync(path.resolve(this.dataFilePath, output + '.json'), data, 'utf8');
 };
 
 /**

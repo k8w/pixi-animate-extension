@@ -5,7 +5,15 @@ const path = require('path');
 const Spritesheet = require('./Spritesheet');
 const ipc = require('electron').ipcRenderer;
 
-ipc.on('settings', (ev, data) => {
+async function waitImgLoad(img) {
+    return new Promise(rs => {
+        img.onload = () => {
+            rs();
+        }
+    })
+}
+
+ipc.on('settings', async (ev, data) => {
 
     const images = [];
     const results = {};
@@ -14,7 +22,7 @@ ipc.on('settings', (ev, data) => {
     const size = response.size;
     const debug = response.debug;
     const scale = response.scale;
-
+    
     for(let id in assets) {
 
         let src = assets[id];
@@ -27,7 +35,8 @@ ipc.on('settings', (ev, data) => {
 
         const img = new Image();
         const pad = Spritesheet.PADDING * 2;
-        img.src = "data:image/png;base64," + fs.readFileSync(src, 'base64');
+        img.src = "data:image/png;base64," + fs.readFileSync(path.resolve(response.dataFilePath, src), 'base64');
+        await waitImgLoad(img);
         const dWidth = Math.ceil(img.width * scale);
         const dHeight = Math.ceil(img.height * scale);
 
@@ -66,7 +75,7 @@ ipc.on('settings', (ev, data) => {
     while(images.length) {
 
         let output = response.output + (++current);
-        let atlas = new Spritesheet(size, scale, debug);
+        let atlas = new Spritesheet(size, scale, debug, response.dataFilePath);
         atlas.addImages(images);
         atlas.save(output);
         atlas.destroy();

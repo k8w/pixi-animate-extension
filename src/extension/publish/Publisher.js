@@ -141,7 +141,8 @@ p.exportAssets = function(done)
                 output: meta.imagesPath + meta.stageName + '_atlas_',
                 size: meta.spritesheetSize,
                 scale: meta.spritesheetScale || 1,
-                debug: this.debug
+                debug: this.debug,
+                dataFilePath: path.dirname(this._dataFile)
             },
             this.assetsPath,
             (assets) => {
