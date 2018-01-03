@@ -13,7 +13,7 @@
     "babel-preset-es2015": "^6.24.1",
     "electron-json-storage": "^2.0.0",
     "escope": "^3.6.0",
-    "k8w-pixi-animate": "^1.5.1",
+    "k8w-pixi-animate": "^1.5.3",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "pixi.js": "*",
