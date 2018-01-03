@@ -5,6 +5,7 @@ const path = require('path');
 const Spritesheet = require('./Spritesheet');
 const ipc = require('electron').ipcRenderer;
 
+/*eslint-disable*/
 async function waitImgLoad(img) {
     return new Promise(rs => {
         img.onload = () => {
@@ -12,6 +13,7 @@ async function waitImgLoad(img) {
         }
     })
 }
+/*eslint-enable*/
 
 ipc.on('settings', async (ev, data) => {
 
