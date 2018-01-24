@@ -30,7 +30,7 @@ p.renderContent = function(renderer)
 {
     return renderer.template('shape-instance', {
         id: this.libraryItem.id,
-        stageName: renderer.stageName,
+        stageName: renderer.library.meta.imagesPath + renderer.stageName,
         func: renderer.compress ? "d" : "drawCommands"
     });
 };
